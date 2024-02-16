@@ -2,6 +2,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Login from '../views/Login.vue';
 import SignUp from '../views/Signup.vue';
+import Dashboard from '../views/Dashboard.vue'; // Import Dashboard component
 
 const routes = [
   {
@@ -13,6 +14,12 @@ const routes = [
     path: '/login',
     name: 'Login',
     component: Login
+  },
+  {
+    path: '/dashboard',
+    name: 'Dashboard',
+    component: Dashboard,
+    meta: { requiresAuth: true } // Add meta field to indicate authentication requirement
   }
 ];
 

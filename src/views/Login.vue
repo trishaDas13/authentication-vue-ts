@@ -1,4 +1,3 @@
-<!-- src/views/Login.vue -->
 <template>
   <div class="min-h-screen flex items-center justify-center bg-gray-100">
     <div class="max-w-md w-full p-8 bg-white shadow-md rounded-md">
@@ -40,27 +39,28 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
+import { useRouter } from "vue-router";
 
 export default defineComponent({
   name: "Login",
-  data() {
-    return {
-      email: "",
-      password: "",
-    };
-  },
-  methods: {
-    async login() {
+  setup() {
+    const email = ref(""); // Create a ref for email
+    const password = ref(""); // Create a ref for password
+    const router = useRouter();
+
+    const login = async () => {
       try {
-        const { email, password } = this;
-        await signInWithEmailAndPassword(auth, email, password);
+        await signInWithEmailAndPassword(auth, email.value, password.value);
+        router.push("/dashboard"); // Navigate to the dashboard page after login
       } catch (error) {
         console.error("Login error:", error);
       }
-    },
+    };
+
+    return { email, password, login };
   },
 });
 </script>
