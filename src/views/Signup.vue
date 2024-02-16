@@ -1,4 +1,3 @@
-<!-- src/views/SignUp.vue -->
 <template>
   <div class="min-h-screen flex items-center justify-center bg-gray-100">
     <div class="max-w-md w-full p-8 bg-white shadow-md rounded-md">
@@ -18,30 +17,29 @@
   </div>
 </template>
   
-  <script lang="ts">
-  import { defineComponent } from 'vue';
-  import { useUserStore } from '../store/user';
-  
-  export default defineComponent({
-    name: 'SignUp',
-    data() {
-      return {
-        email: '',
-        password: ''
-      };
-    },
-    methods: {
-      async signUp() {
-        try {
-          const { email, password } = this;
-          await useUserStore().signUp(email, password);
-          // Redirect or handle successful sign-up
-        } catch (error) {
-          console.error('Sign-up error:', error);
-          // Handle sign-up error (show message, etc.)
-        }
+<script lang="ts">
+import { defineComponent, ref } from 'vue'; // Import ref function
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebase";
+import { useRouter } from 'vue-router';
+
+export default defineComponent({
+  name: 'SignUp',
+  setup() {
+    const email = ref(''); // Define email as a ref
+    const password = ref(''); // Define password as a ref
+    const router = useRouter();
+
+    const signUp = async () => {
+      try {
+        await createUserWithEmailAndPassword(auth, email.value, password.value);
+        router.push('/login');
+      } catch (error) {
+        console.error('Sign-up error::::', error);
       }
     }
-  });
-  </script>
-  
+
+    return { email, password, signUp };
+  }
+});
+</script>
