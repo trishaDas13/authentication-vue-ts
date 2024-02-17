@@ -262,10 +262,6 @@
             <span class="text-gray-700">{{ submittedData.mobile }}</span>
           </li>
           <li class="flex border-b py-2">
-            <span class="font-bold w-24">Email:</span>
-            <span class="text-gray-700">{{ user.email }}</span>
-          </li>
-          <li class="flex border-b py-2">
             <span class="font-bold w-24">Location:</span>
             <span class="text-gray-700">{{ submittedData.location }}</span>
           </li>
@@ -347,6 +343,9 @@ export default defineComponent({
         hobby: "",
         location: "",
         about: "",
+        birthday: "",
+        mobile: "", 
+        language:""
       };
       toggleForm();
     };
