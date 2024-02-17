@@ -56,7 +56,7 @@
             class="w-40 border-4 border-white rounded-full"
           />
           <div class="flex items-center space-x-2 mt-2">
-            <!-- <p class="text-2xl">{{ submittedData.name }}</p> -->
+            <!-- <p class="text-2xl" v-if="userName">{{ userName }}</p> -->
             <span class="bg-blue-500 rounded-full p-1" title="Verified">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -92,151 +92,203 @@
       </div>
     </div>
     <div class="bg-white p-10 md:w-3/4 lg:w-1/2 mx-auto">
-
-<form v-if="showForm" @submit.prevent="submitForm">
-
-  <div class="flex items-end mb-5">
-    <label for="name" class="inline-block w-20 mr-6 text-right 
-                             font-bold text-gray-600">Name:</label>
-    <input type="text" id="name" v-model="formData.name" required placeholder="Name" 
-           class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400 
-                  text-gray-600 placeholder-gray-400
-                  outline-none">
-  </div>
-
-  <div class="flex items-end mb-5">
-    <label for="profession" class="inline-block w-20 mr-6 text-right 
-                             font-bold text-gray-600">Profession: </label>
-    <input  type="text"
-      id="profession"
-      v-model="formData.profession"
-      required
-       placeholder= "profession" 
-           class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400 
-                  text-gray-600 placeholder-gray-400
-                  outline-none">
-  </div>
-
-<div class="flex items-end mb-5">
-    <label for="skills" class="inline-block w-20 mr-6 text-right 
-                             font-bold text-gray-600">Skills: </label>
-    <input  type="text" id="skills" v-model="formData.skills" required
-       placeholder= "Skills" 
-           class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400 
-                  text-gray-600 placeholder-gray-400
-                  outline-none">
-  </div>
-
-<div class="flex items-end mb-5">
-    <label for="hobby" class="inline-block w-20 mr-6 text-right 
-                             font-bold text-gray-600">Hobby: </label>
-    <input  type="text" id="hobby" v-model="formData.hobby" required
-       placeholder= "Your Hobbies" 
-           class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400 
-                  text-gray-600 placeholder-gray-400
-                  outline-none">
-  </div>
-
-  <div class="flex items-end mb-5">
-    <label for="location" class="inline-block w-20 mr-6 text-right 
-                             font-bold text-gray-600">Location: </label>
-    <input  type="text" id="location" v-model="formData.location" required
-       placeholder= "location" 
-           class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400 
-                  text-gray-600 placeholder-gray-400
-                  outline-none">
-  </div>
-
-   <div class="flex items-end mb-5">
-    <label for="about" class="inline-block w-20 mr-6 text-right 
-                             font-bold text-gray-600">About Me:</label>
-    <textarea id="about" v-model="formData.about" class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400 
-                  text-gray-600 placeholder-gray-400
-                  outline-none"
-                  placeholder="Brief about your self"></textarea>
-  </div>
-
-  <div class="flex items-end mb-5">
-    <label for="birthday" class="inline-block w-20 mr-6 text-right 
-                             font-bold text-gray-600">Birthday:</label>
-    <input type="date" id="birthday" v-model="formData.birthday" class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400 
-                  text-gray-600 placeholder-gray-400"/>
-  </div>
-
-   <div class="flex items-end mb-5">
-    <label for="mobile" class="inline-block w-20 mr-6 text-right 
-                             font-bold text-gray-600">Mobile Number:</label>
-    <input type="tel" id="mobile" v-model="formData.mobile" class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400 
-                  text-gray-600 placeholder-gray-400"/>
-  </div>
-
-   <div class="flex items-end mb-5">
-    <label for="mobile" class="inline-block w-20 mr-6 text-right 
-                             font-bold text-gray-600">Language:</label>
-    <input type="language" id="language" v-model="formData.language" class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400 
-                  text-gray-600 placeholder-gray-400"/>
-  </div>
-
-
-
-
-
-  <div class="text-right">
-    <button type='submit' class="py-3 px-8 bg-green-400 text-white font-bold">Submit</button> 
-  </div>
-
-</form>
-</div>
-
-<div class="flex flex-col 2xl:flex-row space-y-4 2xl:space-y-0 2xl:space-x-4">
-           
-                <div v-if="submittedData" class="flex-1 bg-white rounded-lg shadow-xl p-8 mb-10">
-                    <h4 class="text-xl text-gray-900 font-bold">Personal Info</h4>
-                    <ul class="mt-2 text-gray-700">
-                        <li class="flex border-y py-2">
-                            <span class="font-bold w-24">Full name:</span>
-                            <span class="text-gray-700">{{ submittedData.name }}</span>
-                        </li>
-                        <li class="flex border-b py-2">
-                            <span class="font-bold w-24">Birthday:</span>
-                            <span class="text-gray-700">{{ submittedData.birthday }}</span>
-                        </li>
-                        <li class="flex border-b py-2">
-                            <span class="font-bold w-24">Mobile:</span>
-                            <span class="text-gray-700">{{ submittedData.mobile }}</span>
-                        </li>
-                        <li class="flex border-b py-2">
-                            <span class="font-bold w-24">Email:</span>
-                            <span class="text-gray-700">{{ user.email }}</span>
-                        </li>
-                        <li class="flex border-b py-2">
-                            <span class="font-bold w-24">Location:</span>
-                            <span class="text-gray-700">{{ submittedData.location }}</span>
-                        </li>
-                        <li class="flex border-b py-2">
-                            <span class="font-bold w-24">Languages:</span>
-                            <span class="text-gray-700">{{ submittedData.language }}</span>
-                        </li>
-                        <li class="flex border-b py-2">
-                            <span class="font-bold w-24">Profession:</span>
-                            <span class="text-gray-700">{{ submittedData.profession }}</span>
-                        </li>
-                        <li class="flex border-b py-2">
-                            <span class="font-bold w-24">Hobby:</span>
-                            <span class="text-gray-700">{{ submittedData.hobby }}</span>
-                        </li>
-                        <li class="flex border-b py-2">
-                            <span class="font-bold w-24">Skills:</span>
-                            <span class="text-gray-700">{{ submittedData.skills }}</span>
-                        </li>
-              
-                    </ul>
-                </div>
-                
-            
-           
+      <form v-if="showForm" @submit.prevent="submitForm">
+        <div class="flex items-end mb-5">
+          <label
+            for="name"
+            class="inline-block w-20 mr-6 text-right font-bold text-gray-600"
+            >Name:</label
+          >
+          <input
+            type="text"
+            id="name"
+            v-model="formData.name"
+            required
+            placeholder="Name"
+            class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400 text-gray-600 placeholder-gray-400 outline-none"
+          />
         </div>
-</div>
+
+        <div class="flex items-end mb-5">
+          <label
+            for="profession"
+            class="inline-block w-20 mr-6 text-right font-bold text-gray-600"
+            >Profession:
+          </label>
+          <input
+            type="text"
+            id="profession"
+            v-model="formData.profession"
+            required
+            placeholder="profession"
+            class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400 text-gray-600 placeholder-gray-400 outline-none"
+          />
+        </div>
+
+        <div class="flex items-end mb-5">
+          <label
+            for="skills"
+            class="inline-block w-20 mr-6 text-right font-bold text-gray-600"
+            >Skills:
+          </label>
+          <input
+            type="text"
+            id="skills"
+            v-model="formData.skills"
+            required
+            placeholder="Skills"
+            class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400 text-gray-600 placeholder-gray-400 outline-none"
+          />
+        </div>
+
+        <div class="flex items-end mb-5">
+          <label
+            for="hobby"
+            class="inline-block w-20 mr-6 text-right font-bold text-gray-600"
+            >Hobby:
+          </label>
+          <input
+            type="text"
+            id="hobby"
+            v-model="formData.hobby"
+            required
+            placeholder="Your Hobbies"
+            class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400 text-gray-600 placeholder-gray-400 outline-none"
+          />
+        </div>
+
+        <div class="flex items-end mb-5">
+          <label
+            for="location"
+            class="inline-block w-20 mr-6 text-right font-bold text-gray-600"
+            >Location:
+          </label>
+          <input
+            type="text"
+            id="location"
+            v-model="formData.location"
+            required
+            placeholder="location"
+            class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400 text-gray-600 placeholder-gray-400 outline-none"
+          />
+        </div>
+
+        <div class="flex items-end mb-5">
+          <label
+            for="about"
+            class="inline-block w-20 mr-6 text-right font-bold text-gray-600"
+            >About Me:</label
+          >
+          <textarea
+            id="about"
+            v-model="formData.about"
+            class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400 text-gray-600 placeholder-gray-400 outline-none"
+            placeholder="Brief about your self"
+          ></textarea>
+        </div>
+
+        <div class="flex items-end mb-5">
+          <label
+            for="birthday"
+            class="inline-block w-20 mr-6 text-right font-bold text-gray-600"
+            >Birthday:</label
+          >
+          <input
+            type="date"
+            id="birthday"
+            v-model="formData.birthday"
+            class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400 text-gray-600 placeholder-gray-400"
+          />
+        </div>
+
+        <div class="flex items-end mb-5">
+          <label
+            for="mobile"
+            class="inline-block w-20 mr-6 text-right font-bold text-gray-600"
+            >Mobile Number:</label
+          >
+          <input
+            type="tel"
+            id="mobile"
+            v-model="formData.mobile"
+            class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400 text-gray-600 placeholder-gray-400"
+          />
+        </div>
+
+        <div class="flex items-end mb-5">
+          <label
+            for="mobile"
+            class="inline-block w-20 mr-6 text-right font-bold text-gray-600"
+            >Language:</label
+          >
+          <input
+            type="language"
+            id="language"
+            v-model="formData.language"
+            class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400 text-gray-600 placeholder-gray-400"
+          />
+        </div>
+
+        <div class="text-right">
+          <button
+            type="submit"
+            class="py-3 px-8 bg-blue-500 text-white font-bold"
+          >
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <div
+      class="flex flex-col 2xl:flex-row space-y-4 2xl:space-y-0 2xl:space-x-4"
+    >
+      <div
+        v-if="submittedData"
+        class="flex-1 bg-white rounded-lg shadow-xl p-8 mb-10"
+      >
+        <h4 class="text-xl text-gray-900 font-bold">Personal Info</h4>
+        <ul class="mt-2 text-gray-700">
+          <li class="flex border-y py-2">
+            <span class="font-bold w-24">Full name:</span>
+            <span class="text-gray-700">{{ submittedData.name }}</span>
+          </li>
+          <li class="flex border-b py-2">
+            <span class="font-bold w-24">Birthday:</span>
+            <span class="text-gray-700">{{ submittedData.birthday }}</span>
+          </li>
+          <li class="flex border-b py-2">
+            <span class="font-bold w-24">Mobile:</span>
+            <span class="text-gray-700">{{ submittedData.mobile }}</span>
+          </li>
+          <li class="flex border-b py-2">
+            <span class="font-bold w-24">Email:</span>
+            <span class="text-gray-700">{{ user.email }}</span>
+          </li>
+          <li class="flex border-b py-2">
+            <span class="font-bold w-24">Location:</span>
+            <span class="text-gray-700">{{ submittedData.location }}</span>
+          </li>
+          <li class="flex border-b py-2">
+            <span class="font-bold w-24">Languages:</span>
+            <span class="text-gray-700">{{ submittedData.language }}</span>
+          </li>
+          <li class="flex border-b py-2">
+            <span class="font-bold w-24">Profession:</span>
+            <span class="text-gray-700">{{ submittedData.profession }}</span>
+          </li>
+          <li class="flex border-b py-2">
+            <span class="font-bold w-24">Hobby:</span>
+            <span class="text-gray-700">{{ submittedData.hobby }}</span>
+          </li>
+          <li class="flex border-b py-2">
+            <span class="font-bold w-24">Skills:</span>
+            <span class="text-gray-700">{{ submittedData.skills }}</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
