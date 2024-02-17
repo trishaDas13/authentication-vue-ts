@@ -313,7 +313,16 @@ export default defineComponent({
       mobile: "",
       language: ""
     });
-    const submittedData = ref(null);
+    const submittedData = ref<{
+  name: string;
+  birthday: string;
+  mobile: string;
+  location: string;
+  language: string;
+  profession: string;
+  hobby: string;
+  skills: string;
+} | null>(null);
 
     const logout = async () => {
       try {
