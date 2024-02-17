@@ -309,6 +309,9 @@ export default defineComponent({
       hobby: "",
       location: "",
       about: "",
+      birthday:"",
+      mobile: "",
+      language: ""
     });
     const submittedData = ref(null);
 
