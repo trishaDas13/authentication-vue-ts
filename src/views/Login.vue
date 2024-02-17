@@ -3,6 +3,7 @@
     <div class="max-w-md w-full p-8 bg-white shadow-md rounded-md">
       <h2 class="text-2xl font-bold mb-4">Login</h2>
       <form @submit.prevent="login">
+        
         <div class="mb-4">
           <label for="email" class="block text-sm font-medium text-gray-700"
             >Email</label

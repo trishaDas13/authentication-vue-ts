@@ -7,3 +7,6 @@
   box-sizing: border-box;
 }
 
+#root{
+  background-color: rgba(155, 154, 154, 0.486);
+}
